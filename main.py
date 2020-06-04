@@ -22,7 +22,7 @@ text = Text(window)
 
 # Input of time:
 hours_required = 0
-minutes_required = 0
+minutes_required = 2
 seconds_required = 30
 
 # Calc of total minutes:
