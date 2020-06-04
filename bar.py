@@ -2,6 +2,7 @@ import pygame
 
 class Bar():
 
+    # Preferences:
     color = (139,225,148)
     smoothness_of_bar = 20
 

@@ -2,13 +2,17 @@ import pygame, math
 
 class Text():
 
+    # Preferences:
     window = None
     text_color = (255, 255, 255)
+    default_text_size = None
 
     def __init__(self, window):
         pygame.font.init()
         self.window = window
-        self.text_size = math.floor(window.get_width()/10/2)
+        if self.default_text_size == None:
+            self.text_size = math.floor(window.get_width()/10/2)
+        else: self.text_size == self.default_text_size
 
     def define_what_to_write(self, hms:tuple):
         h, m, s = hms
