@@ -1,5 +1,5 @@
 # Modules:
-import pygame, time
+import pygame, time, sys
 
 # Classes:
 from bar import Bar
@@ -9,10 +9,10 @@ from text import  Text
 window_title = "Progress Bar Counter"
 window_size = width, height = (600, 200)
 window_icon = pygame.image.load('./icons/countdown1.png')
-window_color = (64,45,65)
+window_color = (64,45,65, 50)
 
 # Aplying preferences:
-window = pygame.display.set_mode(window_size)
+window = pygame.display.set_mode(window_size, pygame.SRCALPHA)
 pygame.display.set_caption(window_title)
 pygame.display.set_icon(window_icon)
 
@@ -22,8 +22,35 @@ text = Text(window)
 
 # Input of time:
 hours_required = 0
-minutes_required = 2
-seconds_required = 30
+minutes_required = 0
+seconds_required = 45
+
+# If has any argument in the CLI 
+if len(sys.argv) > 1:
+
+    # If the CLI argument was like:
+    # `progbar.py 25`, it is the seconds
+    if len(sys.argv) == 2:
+        hours_required = 0
+        minutes_required = 0
+        seconds_required = int(sys.argv[1])
+        
+    # If the CLI argument was like:
+    # `progbar.py 1 25`, it is the minutes
+    # followed by the seconds
+    if len(sys.argv) == 3:
+        hours_required = 0
+        minutes_required = int(sys.argv[1])
+        seconds_required = int(sys.argv[2])
+
+    # If the CLI argument was like:
+    # `progbar.py 1 25 30`, it is the hours
+    # followed by the minutes, followed by
+    # the seconds
+    if len(sys.argv) == 4:
+        hours_required = int(sys.argv[1])
+        minutes_required = int(sys.argv[2])
+        seconds_required = int(sys.argv[3])
 
 # Calc of total minutes:
 minutes_in_total = (
